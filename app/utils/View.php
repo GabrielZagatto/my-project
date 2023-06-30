@@ -3,6 +3,15 @@
 namespace App\utils;
 
 class View{
+    
+    //variaveis padroes da view
+    //array
+    private static $vars = [];
+    //responsavel por definir os dados iniciais da classe
+    //array($vars)
+    public static function init($vars = []){
+        self::$vars = $vars;
+    }
     //recebe string
     //return string
     //retorna o conteudo de uma view

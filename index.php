@@ -2,6 +2,14 @@
 
 require __DIR__.'/vendor/autoload.php';
 
-use App\controller\pages\Home;
+use App\http\Router;
 
-echo Home::getHome();
+define('URL', 'http://localhost:8000');
+
+$obRouter=new Router(URL);
+
+//inclui a rota de paginas
+include __DIR__.'/routes/pages.php';
+
+//imprime o response da rota
+$obRouter->run()->sendResponse();
