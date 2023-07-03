@@ -25,6 +25,9 @@ class View{
     public static function render($view, $vars = []){
         //conteudo da view
         $contentView = self::getContentView($view);
+        //merge de variaveis da view
+        $vars = array_merge(self::$vars, $vars);
+
         $keys = array_keys($vars);
         $keys = array_map(function($item){
             return '{{'.$item.'}}';

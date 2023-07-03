@@ -23,5 +23,7 @@ body{
     justify-content: center;
     height: 15vh;
     width: 100vw;
-    bottom: 100%;
+}
+.cor{
+    color: green;
 }

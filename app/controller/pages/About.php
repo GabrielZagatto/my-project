@@ -6,9 +6,9 @@ use App\utils\View;
 use App\model\entity\Organization;
 
 class About extends Page{
-    //metodo responsavel por retornar o conteudo view da nossa home
+    //metodo responsavel por retornar o conteudo view da nossa pagina de sobre
     //return string
-    public static function getHome(){
+    public static function getAbout(){
         $obOrganization = new Organization;
         
         //view da home

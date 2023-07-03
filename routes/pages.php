@@ -13,6 +13,13 @@ $obRouter->get('/', [
 //rota sobre
 $obRouter->get('/sobre', [
     function(){
-        return new Response(200, pages\About::getHome());
+        return new Response(200, pages\About::getAbout());
+    }
+]);
+
+//rota dinamica
+$obRouter->get('/pagina/{idPagina}/{acao}', [
+    function($idPagina, $acao){
+        return new Response(200,'pagina '.$idPagina.' - '.$acao);
     }
 ]);
