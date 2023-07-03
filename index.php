@@ -4,8 +4,13 @@ require __DIR__.'/vendor/autoload.php';
 
 use App\http\Router;
 use App\utils\View;
+use \WilliamCosta\DotEnv\Environment;
 
-define('URL', 'http://localhost:8000');
+//carrega variaveis de ambiente
+Environment::load(__DIR__);
+
+//defini a constante de URL do projeto
+define('URL', getenv('URL'));
 
 //defini o valor padrao das variaveis
 View::init([

@@ -17,9 +17,26 @@ $obRouter->get('/sobre', [
     }
 ]);
 
-//rota dinamica
+//rota depoimentos
+$obRouter->get('/depoimentos', [
+    function(){
+        return new Response(200, pages\Testimony::getTestimonies());
+    }
+]);
+
+//rota depoimentos (insert)
+$obRouter->post('/depoimentos', [
+    function($request){
+        echo "<pre>"; print_r($request); echo "</pre>"; exit;
+        return new Response(200, pages\Testimony::getTestimonies());
+    }
+]);
+
+/** mataro ela F
+ * //rota dinamica
 $obRouter->get('/pagina/{idPagina}/{acao}', [
     function($idPagina, $acao){
         return new Response(200,'pagina '.$idPagina.' - '.$acao);
     }
 ]);
+ */
