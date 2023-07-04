@@ -34,4 +34,12 @@ class Testimony{
         //deu bom
         return true;
     }
+
+    //responsavel por retornar depoimentos
+    // string ($where) ($order) ($limit) ($field)
+    //return PDOStatement
+    public static function getTestimonies($where = null, $order = null, $limit = null, $field = '*'){
+        return (new Database('depoimentos'))->select($where, $order, $limit , $field);
+    }
+
 }
