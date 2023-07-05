@@ -15,5 +15,3 @@ include __DIR__.'/routes/admin.php';
 
 //imprime o response da rota
 $obRouter->run()->sendResponse();
-
-testestestestes
