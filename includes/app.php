@@ -23,7 +23,9 @@ View::init([
 
 //define o mapeamento de middlewares
 MiddlewareQueue::setMap([
-    'maintenance' => App\http\middleware\Maintenance::class
+    'maintenance' => App\http\middleware\Maintenance::class,
+    'required-admin-logout' => App\http\middleware\RequireAdminLogout::class,
+    'required-admin-login' => App\http\middleware\RequireAdminLogin::class
 ]);
 
 //define o mapeamento de middlewares padroes (executados em todas as rotas)

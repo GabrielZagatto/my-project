@@ -3,6 +3,7 @@
 namespace App\controller\admin;
 use App\utils\View;
 use App\model\entity\User;
+use App\session\admin\Login as SessionAdminLogin;
 
 class Login extends Page{
 
@@ -38,6 +39,27 @@ class Login extends Page{
         if(!$obUser instanceof User){
             return self::getLogin($request, 'E-mail ou senha incorretos');
         }
+
+        //verifica a senha do usuario
+        if(!password_verify($senha, $obUser->senha)){
+            return self::getLogin($request, 'E-mail ou senha incorretos');
+        }
+
+        //cria a sessao de login
+        SessionAdminLogin::login($obUser);
+        
+        //redireiona o usuario para a home do admin
+        $request->getRouter()->redirect('/admin');
+    }
+
+    //responsavel por deslogar o usuario
+    //Request $request
+    public static function setLogout($request){
+         //destroi a sessao de login
+         SessionAdminLogin::logout();
+        
+         //redireiona o usuario para a tela de login
+         $request->getRouter()->redirect('/admin/login');
     }
 
 }

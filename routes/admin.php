@@ -5,6 +5,9 @@ use App\controller\admin;
 
 //rota admin
 $obRouter->get('/admin', [
+    'middlewares' => [
+        'required-admin-login'
+    ],
     function(){
         return new Response(200, 'ADM CARAI');
     }
@@ -12,6 +15,9 @@ $obRouter->get('/admin', [
 
 //rota login
 $obRouter->get('/admin/login', [
+    'middlewares' => [
+        'required-admin-logout'
+    ],
     function($request){
         return new Response(200, admin\Login::getLogin($request));
     }
@@ -19,7 +25,19 @@ $obRouter->get('/admin/login', [
 
 //rota admin (POST)
 $obRouter->post('/admin/login', [
+    'middlewares' => [
+        'required-admin-logout'
+    ],
     function($request){
         return new Response(200, admin\Login::setLogin($request));
+    }
+]);
+
+//rota logout
+$obRouter->get('/admin/logout', ['middlewares' => [
+    'required-admin-login'
+],
+    function($request){
+        return new Response(200, admin\Login::setLogout($request));
     }
 ]);
