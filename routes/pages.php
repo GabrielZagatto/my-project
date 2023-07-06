@@ -2,6 +2,7 @@
 
 use App\http\Response;
 use App\controller\pages;
+use App\controller\admin;
 
 //rota home
 $obRouter->get('/', [
@@ -28,6 +29,27 @@ $obRouter->get('/depoimentos', [
 $obRouter->post('/depoimentos', [
     function($request){
         return new Response(200, pages\Testimony::insertTestimony($request));
+    }
+]);
+
+//rota cadastro
+$obRouter->get('/cadastro', [
+    function($request){
+        return new Response(200, pages\Register::getRegister($request));
+    }
+]);
+
+//rota cadastro (insert)
+$obRouter->post('/cadastro', [
+    function($request){
+        return new Response(200, pages\Register::insertRegister($request));
+    }
+]);
+
+//rota cadastro (insert)
+$obRouter->post('/logout', [
+    function($request){
+        return new Response(200, admin\Login::setLogout($request));
     }
 ]);
 

@@ -4,6 +4,8 @@ namespace App\controller\admin;
 use App\utils\View;
 use App\model\entity\User;
 use App\session\admin\Login as SessionAdminLogin;
+use App\controller\pages\Page as NormalPage;
+use App\controller\pages\Register;
 
 class Login extends Page{
 
@@ -23,7 +25,7 @@ class Login extends Page{
         ]);
 
         //retorna a pagina completa
-        return parent::getPage('WORK-PROJECT-LOGIN', $content);
+        return  NormalPage::getPage('WORK-PROJECT-LOGIN', $content);
     }
 
     //responsavel por definir o login do usuario
@@ -49,7 +51,7 @@ class Login extends Page{
         SessionAdminLogin::login($obUser);
         
         //redireiona o usuario para a home do admin
-        $request->getRouter()->redirect('/admin');
+        $request->getRouter()->redirect('/depoimentos');
     }
 
     //responsavel por deslogar o usuario
