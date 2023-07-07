@@ -53,6 +53,26 @@ $obRouter->post('/logout', [
     }
 ]);
 
+//rota perfil
+$obRouter->get('/perfil', [
+    'middlewares' => [
+        'required-admin-login'
+    ],
+    function($request){
+        return new Response(200, pages\Profile::getProfile($request));
+    }
+]);
+
+//rota perfil (insert)
+$obRouter->post('/perfil', [
+    'middlewares' => [
+        'required-admin-login'
+    ],
+    function($request){
+        return new Response(200, pages\Profile::insertImageProfile($request));
+    }
+]);
+
 /** mataro ela F
  * //rota dinamica
 $obRouter->get('/pagina/{idPagina}/{acao}', [

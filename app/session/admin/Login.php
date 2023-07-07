@@ -4,6 +4,10 @@ namespace App\session\admin;
 
 class Login{
 
+    public static function sessaoforcada(){
+        return self::init();
+    }
+
     //responsavel por iniciar a sessao
     private static function init(){
         //verifica se a sessao nao esta ativa

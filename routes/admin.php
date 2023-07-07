@@ -34,7 +34,8 @@ $obRouter->post('/admin/login', [
 ]);
 
 //rota logout
-$obRouter->get('/admin/logout', ['middlewares' => [
+$obRouter->get('/admin/logout', [
+    'middlewares' => [
     'required-admin-login'
 ],
     function($request){
